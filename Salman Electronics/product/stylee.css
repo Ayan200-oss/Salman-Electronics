@@ -1,0 +1,367 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+
+body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* --- GENERAL & PRODUCT CARD STYLES --- */
+.mainBackground {
+    background-color: rgba(7, 7, 7, 0.11);
+}
+.sliderBlock_items__showing {
+    opacity: 1 !important;
+    z-index: 10;
+}
+.img-zoom-container {
+    position: relative;
+    cursor: zoom-in;
+}
+.img-zoom-lens {
+    position: absolute;
+    border: 3px solid #ff4757;
+    width: 100px;
+    height: 100px;
+    background-color: #fff;
+    background-repeat: no-repeat;
+    border-radius: 50%;
+    overflow: hidden;
+    opacity: 0;
+    z-index: 60;
+    pointer-events: none;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    transform: translate(-50%, -50%);
+}
+.block_rating__stars > input { display: none; }
+.block_rating__stars > label { color: #c9c9c9; float: right; }
+.block_rating__stars > label:before {
+    margin: 5px;
+    font-size: 15px;
+    font-family: "FontAwesome";
+    display: inline-block;
+    content: "\f005";
+    cursor: pointer;
+}
+.block_rating__stars > input:checked ~ label,
+.block_rating__stars:not(:checked) > label:hover,
+.block_rating__stars:not(:checked) > label:hover ~ label {
+    color: #fccf47;
+    cursor: pointer;
+}
+.radio_button { display: none; }
+.radio_button:checked + .color-swatch {
+    width: 32px; 
+    height: 32px; 
+    box-shadow: 0 0 5px 3px rgba(83, 109, 254, 0.5);
+    border: 2px solid #fff;
+}
+.radio_button:checked + .storage-swatch {
+    background-color: #ff5e14;
+    color: #fff;
+    border-color: #ff5e14; 
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+}
+.radio_button:checked + .storage-swatch:hover {
+    color: black;
+}
+.block_descriptionCharacteristic {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease-in-out, opacity 0.3s ease-in-out;
+}
+.block_descriptionCharacteristic__active {
+    opacity: 1;
+}
+
+/* --- HEADER / NAVBAR --- */
+.qa-header {
+    height: 60px;
+    background-color: white;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    overflow: hidden;
+    margin-top: 10px;
+}
+.qa-logo {
+    max-width: 250px;
+    padding: 0 10px;
+    overflow: hidden;
+}
+.qa-logo a {
+    display: flex;
+    align-items: center;
+    height: 60px;
+}
+.qa-logo a img {
+    max-width: 100%;
+    max-height: 60px;
+}
+.qa-nav {
+    display: flex;
+    flex: 1;
+    padding: 0 10px;
+}
+.qa-nav__list {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.qa-nav__item a {
+    text-decoration: none;
+    color: black;
+    font-size: 14px;
+    text-transform: uppercase;
+    display: block;
+    height: 60px;
+    line-height: 60px;
+    cursor: pointer;
+    padding: 0 10px;
+}
+.qa-nav__item a:hover {
+    color: #ffffff;
+    background-color: #ff5e14;
+    border-radius: 15px;
+}
+.qa-nav__close {
+    display: none;
+    text-align: right;
+    padding: 10px;
+}
+.qa-nav__close span {
+    font-size: 40px;
+    display: inline-block;
+    border: 1px solid #cccccc;
+    padding: 0 10px;
+    cursor: pointer;
+}
+.qa-nav__toggle {
+    padding: 18px 8px;
+    width: 50px;
+    height: 60px;
+    display: none; /* Hidden on desktop */
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+    background-color: white;
+}
+.qa-nav__toggle i {
+    background-color: #ff5e14;
+    height: 4px;
+    display: block;
+}
+@media only screen and (max-width: 650px) {
+    .qa-header { justify-content: space-between; }
+    .qa-logo { flex: 1; }
+    .qa-nav { flex: 0; }
+    .qa-nav__list {
+        flex-wrap: nowrap;
+        position: fixed;
+        left: 100%; /* Off-screen by default */
+        top: 0;
+        flex-direction: column;
+        background: #ffffff;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        transition: left .3s;
+        text-align: center;
+        z-index: 100;
+    }
+    .qa-nav__item a {
+        padding: 10px;
+        font-size: 20px;
+        font-weight: bold;
+        height: auto;
+        line-height: normal;
+        color: black;
+    }
+    .qa-nav__close { display: block; }
+    .qa-nav__toggle { display: flex; }
+    .qa-nav__list--show { left: 0; }
+}
+
+/* --- MAIN SEARCH SECTION --- */
+.qa-main-search{
+    background-color: rgba(7, 7, 7, 0.11);
+    margin-top: 15px;
+}
+.qa-main-content {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 10px;
+    padding-bottom: 70px;
+}
+.qa-main-content__title {
+    color: #ff5e14;
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+#qa-search-input {
+    background-position: 10px 12px;
+    background-repeat: no-repeat;
+    width: 100%;
+    font-size: 20px;
+    padding: 12px 20px 12px 40px;
+    border: 3px solid #ff5e14;
+    margin-bottom: 12px;
+    border-radius: 20px;
+    outline: 0px;
+}
+/* List Item Container (li) */
+#qa-search-list li {
+    display: none; /* Controlled by JS */
+}
+
+/* List Item Link (a) - General style */
+/* This combines styles for all list items and ensures vertical centering for image items */
+#qa-search-list li a {
+    border: 1px solid #ddd; 
+    margin-top: 1px; 
+    background-color: #f6f6f6; 
+    padding: 5px 5px; /* Added back vertical padding, kept user's horizontal 5px padding */
+    font-size: 20px; 
+    color: black;
+    text-decoration: none;
+    
+    /* FIX: Layout for items with images: Use flexbox to center content */
+    display: flex; 
+    align-items: center; 
+    gap: 15px; /* Space between image and text */
+}
+
+/* Special class for items with product details wrapper (for two-line name/price display) */
+/* Removed empty .search-result-item ruleset for compatibility with CSS standards */
+
+
+/* List Item Link (a) - Hover effect */
+#qa-search-list li a:hover { /* Simplified the selector for consistency */
+    background-color: var(--accent-orange); 
+    color: white;
+    background-color: #ff5e14; 
+    font-weight: bold; 
+}
+
+/* Styling for the image within the search result */
+.product-img {
+    margin-top: 5px; 
+    width: 70px; 
+    height: 70px; 
+    object-fit: contain;
+    border-radius: 4px;
+    flex-shrink: 0; 
+    background-color: white;
+    padding: 5px;
+}
+
+
+
+/* --- SPINNER --- */
+.spinner-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #F9FAFB;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    opacity: 1; 
+    transition: opacity 0.5s ease-out, visibility 0.5s linear 0.5s;
+}
+.spinner-wrapper.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+.spinner {
+    --size-of-spinner: 60px;
+    --spinner-border-width: 5px;
+    --spinner-color: #ff5e14;
+    --speed-of-animation: 3s;
+    width: var(--size-of-spinner);
+    height: var(--size-of-spinner);
+    border-radius: 50%;
+    position: relative; 
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+}
+.spinner::after {
+    content: "";
+    display: block;
+    position: absolute;
+    border-radius: 50%;
+    inset: 0;
+    border: var(--spinner-border-width) solid var(--spinner-color);
+    border-left-color: transparent;
+    border-right-color: transparent;
+    animation: spinny var(--speed-of-animation) linear infinite;
+}
+.spinner-logo {
+    position: absolute;
+    z-index: 10;
+    transform: rotate(0deg);
+    text-align: center;
+    font-size: 1.2em; 
+    font-weight: bold; 
+    color: #ff5e14;
+}
+@keyframes spinny {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* --- TYPING ANIMATION KEYFRAMES --- */
+
+/* Defines the typing effect by growing the width from 0 to 100% */
+@keyframes typing {
+    from { width: 0 }
+    to { width: 57% }
+}
+
+/* Defines the blinking effect for the cursor */
+@keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: #ff5e14; } /* Use your main accent color */
+}
+
+/* --- H1 TITLE STYLES (Applies the animation) --- */
+.qa-main-content__title {
+    color: #ff5e14; /* Ensure the text color is correct */
+    font-size: 30px; /* Use the correct font size */
+    margin-bottom: 10px;
+
+    /* Typewriter effect properties */
+    display: block;
+    width: 25ch; /* Control the final visible width (approx. 25 characters) */
+    overflow: hidden; /* Hide the text as the width is animated */
+    white-space: nowrap; /* Keep the text on one line */
+    border-right: .15em solid #ff5e14; /* The initial blinking cursor */
+    
+    /* Apply both animations: 
+       1. typing: 3 seconds duration, steps(25) matches the character count, runs once forwards
+       2. blink-caret: 0.75 seconds duration, step-end for sharp blinking, runs infinitely
+    */
+    animation: 
+        typing 3s steps(25, end) 1s forwards,
+        blink-caret .75s step-end infinite 4s; /* Start blinking after 4s (typing time + 1s delay) */
+}
+
+/* --- MOBILE ADJUSTMENTS --- */
+@media only screen and (max-width: 650px) {
+    .qa-main-content__title {
+        /* Disable complex animation on smaller screens for performance and clarity */
+        width: 100%;
+        animation: none;
+        border-right: none;
+        white-space: normal;
+    }
+}
