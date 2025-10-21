@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salman Electronics - About Us</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+   
+    <link rel="shortcut icon" href="../SE Logo/SE favicon image.png" type="image/x-icon">
+    
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script>
+    
+    <!-- Load Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+        <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Configure Tailwind for custom styles and Inter font -->
+
+  <link rel="stylesheet" href="about.css">
+
+
+
+
+</head>
+<body>
+
+      <div class="spinner-wrapper" id="spinner">
+        <div class="spinner">
+            <div class="spinner-logo">SE</div>
+        </div>
+    </div>
+
+
+<!-- Navbar Code Start-->
+
+<div class="qa-header">
+    <div class="qa-logo">
+        <a href="../index.html"><img src="../SE Logo/SE NAVBAR LOGO.png" alt="logo"></a>
+    </div>
+    <div class="qa-nav">
+        <div class="qa-nav__toggle" onclick="Show()">
+           <i></i>
+            <i style="width: 25px;"></i>
+            <i></i>
+        </div>
+
+        <!-- ID changed to qa-nav-list-id -->
+        <ul id="qa-nav-list-id" class="qa-nav__list">
+            <li class="qa-nav__close"><span onclick="Hide()">×</span></li>
+            <li class="qa-nav__item"><a href="../index.html">Home</a></li>
+            <li style="background-color: #ff5e14; border-radius: 15px;" class="qa-nav__item"><a style="color: white;" href="about.html">About Us</a></li>
+            <li class="qa-nav__item"><a href="../Product Page/product.html">Products</a></li>
+
+            <li class="qa-nav__item"><a href="../Contact/Contact.html">Contact</a></li>
+        </ul>
+    </div>
+</div>
+
+<br><br><br>
+
+<div class="qa-main-content">
+    <h1 class="qa-main-content__title">Search Your Desired Phone...</h2>
+    <!-- ID changed to qa-search-input -->
+    <input type="text" id="qa-search-input" onkeyup="myFunction()" title="Type in a name">
+
+    <!-- ID changed to qa-search-list -->
+    <ul id="qa-search-list">
+        <li><a href="#">Iphone..</a></li>
+         <li><a href="../product/index.html"> <img class="product-img" src="https://images.priceoye.pk/samsung-galaxy-s25-ultra-pakistan-priceoye-bbrjh-500x500.webp" alt=""> Samsung Galaxy S25 Ultra (12GB-1TB)</a></li>
+        <li><a href="../product/index.html"> <img class="product-img" src="https://images.priceoye.pk/samsung-galaxy-s24-fe-pakistan-priceoye-7nmbv-500x500.webp" alt=""> Samsung Galaxy S24 FE</a></li>
+        <li><a href="#">Techno..</a></li>
+        <li><a href="#">Vivo..</a></li>
+        <li><a href="#">oppo..</a></li>
+    </ul>
+</div>
+
+
+ <!-- WhatsApp Floating Button code Start -->
+<a
+  href="https://wa.me/03343116060"  
+  class="whatsapp-float"
+  target="_blank"
+  aria-label="Chat on WhatsApp"
+> 
+<!-- Replace with your number -->
+  <img
+    src="https://img.icons8.com/color/96/000000/whatsapp--v1.png"
+    alt="WhatsApp"
+  />
+</a>
+
+    <!-- WhatsApp Floating Button code ends -->
+
+
+
+    <header class="hero-section">
+        <div class="header-top">
+            <a href="../index.html">
+            <span class="back-arrow"><i class="fas fa-arrow-left"></i></span>
+            </a>
+        </div>
+        <div class="logo-container">
+            <div class="logo">
+                <img src="../SE Logo/SE favicon image.png" alt="">
+            </div>
+        </div>
+        <a href="../index.html" style="text-decoration: none;">
+        <h1 class="hero-title"><span style="color: #ff5e14 ;">S</span>alman <span style="color: #ff5e14 ;">E</span>lectronics</h1>
+        </a>
+        <p class="hero-subtitle">Bringing innovation to your doorstep since 1993. Your trusted source for cutting-edge electronics and unparalleled customer service.</p>
+        <a href="../Product Page/product.html" class="cta-button">Explore Our Products</a>
+
+        <model-viewer 
+            src="https://modelviewer.dev/shared-assets/models/Laptop.glb"
+            alt="A 3D model of a high-end laptop, representing our electronic products"
+            ar
+            shadow-intensity="1.5"
+            camera-controls
+            auto-rotate
+            touch-action="pan-y"
+            exposure="1"
+            brightness="1"
+            environment-image="neutral"
+            poster="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="
+        ></model-viewer>
+        </header>
+
+    <main class="container">
+        <section class="our-journey">
+            <span class="section-icon"><i class="fas fa-route"></i></span>
+            <h2>Our Journey</h2>
+            <div class="journey-content">
+                <p>Founded in 1993, Salman Electronics embarked on a mission to redefine the electronics retail landscape. What started as a humble shop with a passion for technology and a focus on customer satisfaction, quickly grew into a trusted name known for quality and reliability. Over the past two decades, we've had the privilege of serving countless customers, helping them discover the latest innovations and connecting them with the perfect electronic solutions. Our journey is built on a foundation of trust, expertise, and a commitment to making cutting-edge technology accessible to everyone.</p>
+            </div>
+        </section>
+
+        <section class="our-milestones">
+            <span class="section-icon"><i class="fas fa-trophy"></i></span>
+            <h2>Our Milestones</h2>
+            <div class="milestone-list">
+                <div class="milestone-item">
+                    <div class="icon">1</div>
+                    <div class="content">
+                        <h4>1999 - The Beginning</h4>
+                        <p>Opened our first store, introducing quality electronics to the local community.</p>
+                    </div>
+                </div>
+                <div class="milestone-item">
+                    <div class="icon">2</div>
+                    <div class="content">
+                        <h4>2005 - Expansion Online</h4>
+                        <p>Launched our e-commerce platform, reaching customers nationwide.</p>
+                    </div>
+                </div>
+                <div class="milestone-item">
+                    <div class="icon">3</div>
+                    <div class="content">
+                        <h4>2012 - Product Diversity</h4>
+                        <p>Expanded our product range to include smart home devices and accessories.</p>
+                    </div>
+                </div>
+                <div class="milestone-item">
+                    <div class="icon">4</div>
+                    <div class="content">
+                        <h4>Today - Leading the Way</h4>
+                        <p>Recognized as a leader in electronics retail, committed to unparalleled customer satisfaction.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+<section class="delivery-section">
+  <h2>Delivering all across Pakistan</h2>
+  <div class="stats">
+    <div class="stat">
+      <div class="circle">140</div>
+      <p>Cities</p>
+    </div>
+    <div class="stat">
+      <div class="circle">100</div>
+      <p>Districts</p>
+    </div>
+    <div class="stat">
+      <div class="circle">5</div>
+      <p>Provinces</p>
+    </div>
+  </div>
+  
+  <br><br><br><br><br><br>
+
+  <!-- Cityscape silhouette background -->
+  <div class="cityscape">
+    <img src="https://media.istockphoto.com/id/1400159566/vector/silhouette-skyline-panorama-of-city-of-lahore-pakistan.jpg?s=612x612&w=0&k=20&c=PtxP2mLzaQMRuE6mivjrtBdkL2xsnE0CT8bA9up8E0s=" alt="">
+  </div>
+</section>
+
+
+
+        <section class="our-mission">
+            <span class="section-icon"><i class="fas fa-bullseye"></i></span>
+            <h2>Our Mission</h2>
+            <div class="mission-content">
+                <p>Our mission is to bridge the gap between innovation and everyday life. We strive to empower our customers by providing them with the most reliable, advanced, and user-friendly electronic products. We are dedicated to continuous improvement, ensuring that we not only meet but exceed expectations, making technology an integral and effortless part of your world. We aim to be more than just a retailer; we aspire to be your guide in the ever-evolving landscape of electronics.</p>
+            </div>
+        </section>
+
+        <section class="our-core-values">
+            <span class="section-icon"><i class="fas fa-handshake"></i></span>
+            <h2>Our Core Values</h2>
+            <div class="core-values-content">
+                <div class="value-item">
+                    <div class="icon"><i class="fas fa-users"></i></div>
+                    <div class="content">
+                        <h4>Customer-Centricity</h4>
+                        <p>You are the heartbeat of our business. We are deeply committed to understanding your needs and exceeding your expectations, delivering a personalized shopping experience and unparalleled support.</p>
+                    </div>
+                </div>
+                <div class="value-item">
+                    <div class="icon"><i class="fas fa-lightbulb"></i></div>
+                    <div class="content">
+                        <h4>Innovation</h4>
+                        <p>We embrace the future, constantly seeking out and offering the latest technological advancements to keep you at the forefront of innovation.</p>
+                    </div>
+                </div>
+                <div class="value-item">
+                    <div class="icon"><i class="fas fa-shield-alt"></i></div>
+                    <div class="content">
+                        <h4>Integrity</h4>
+                        <p>Honesty, transparency, and ethical conduct are the cornerstones of our operations. We build trust through fair practices and reliable products.</p>
+                    </div>
+                </div>
+                <div class="value-item">
+                    <div class="icon"><i class="fas fa-headset"></i></div>
+                    <div class="content">
+                        <h4>Service</h4>
+                        <p>Our commitment extends beyond the sale. We provide exceptional pre- and post-purchase support, ensuring a seamless and worry-free experience throughout your journey with us.</p>
+                    </div>
+                </div>
+                <div class="value-item">
+                    <div class="icon"><i class="fas fa-graduation-cap"></i></div>
+                    <div class="content">
+                        <h4>Empowerment</h4>
+                        <p>We believe in the power of knowledge. We empower our customers with insights, guidance, and solutions that enable them to make informed decisions and get the most out of their electronics.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="faqs">
+            <span class="section-icon"><i class="fas fa-question-circle"></i></span>
+            <h2>FAQs</h2>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>What is your return policy?</span>
+                        <span class="arrow"><i class="fas fa-chevron-down"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We offer a 30-day money-back guarantee on most products. Please check our detailed return policy page for specific conditions and exceptions.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Do you ship internationally?</span>
+                        <span class="arrow"><i class="fas fa-chevron-down"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Currently, we only ship within [Your Country/Region]. We are working to expand our shipping capabilities soon.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>How can I track my order?</span>
+                        <span class="arrow"><i class="fas fa-chevron-down"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Once your order is shipped, you will receive a tracking number via email. You can use this number on our website's "Track Order" page or the carrier's website.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>What payment methods do you accept?</span>
+                        <span class="arrow"><i class="fas fa-chevron-down"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We accept major credit cards (Visa, MasterCard, Amex), PayPal, and [other payment methods like Apple Pay, Google Pay, etc.].</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+
+
+    <br><br><br><br><br>
+
+<!-- Footer Code Start -->
+
+ <footer class="footer-section">
+        <div class="container mx-auto px-4 md:px-6">
+            
+            <!-- Top CTA Section (Horizontal Layout like Image 1) -->
+            <div class="footer-cta py-8 md:py-10">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    
+                    <!-- Find us -->
+                    <div class="flex items-start single-cta">
+                        <i class="fas fa-map-marker-alt text-2xl mr-4 mt-1"></i>
+                        <div class="cta-text">
+                            <h4>Find us</h4>
+                            <span>SHOP NO. 44, CLIFTON SHOPPING ARCADE, <br>
+NEAR MOTTAS STORE BLOCK-5, CLIFTON, KARACHI.</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Call us -->
+                    <div class="flex items-start single-cta">
+                        <i class="fas fa-phone text-2xl mr-4 mt-1"></i>
+                        <div class="cta-text">
+                            <h4>Call us</h4>
+                            <span>033-431-160-60</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Mail us -->
+                    <div class="flex items-start single-cta">
+                        <i class="far fa-envelope-open text-2xl mr-4 mt-1"></i>
+                        <div class="cta-text">
+                            <h4>Mail us</h4>
+                            <span>salmanelectronics@gmail.com</span>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+
+            <!-- Main Footer Content (3 Columns Layout like Image 1) -->
+            <div class="footer-content py-10 md:py-12">
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+                    
+                    <!-- Column 1: Logo & Text -->
+                    <div class="footer-widget">
+                        <div class="footer-logo">
+                            <!-- Placeholder image for the logo -->
+                            <a href="../index.html">
+                                <img style="background-color: white; border-radius: 20px; padding-top: 10px; padding-left: 5px; padding-right: 5px; "  src="../SE Logo/SE NAVBAR LOGO.png" 
+                                    class="img-fluid " 
+                                    alt="Salman Electronics Logo" 
+                                    onerror="this.onerror=null; this.src='https:../SE Logo/SE NAVBAR LOGO.png';"
+                                >
+                            </a>
+                        </div>
+                        <div class="footer-text">
+                            <p style="font-weight: bold; margin-top: 15px;">Salman Electronics is your trusted mobile destination, offering the latest smartphones at unbeatable prices. We provide genuine products, reliable service, and customer satisfaction with every purchase. Stay connected with Salman Electronics — where quality meets affordability.</p>
+                        </div>
+                        <div class="footer-social-icon">
+                            <span>Follow us</span>
+                            <div class="flex space-x-3">
+                                <a href="#" class="facebook-bg"><i class="fab fa-facebook-f"></i></a>
+                                <a href="#" class="twitter-bg"><i class="fab fa-twitter"></i></a>
+                                <a href="#" class="google-bg"><i class="fab fa-google-plus-g"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Column 2: Useful Links -->
+                    <div class="footer-widget">
+                        <div class="footer-widget-heading">
+                            <h3>Useful Links</h3>
+                        </div>
+                        <ul class="flex flex-wrap">
+                            <li><a href="../index.html">Home</a></li>
+                            <li><a href="../About/about.html">About us</a></li>
+                            <li><a href="#">Services</a></li>
+                            <li><a href="about.html">Portfolio</a></li>
+                            <li><a href="../Contact/Contact.html">Contact</a></li>
+                            <li><a href="#">Our Services</a></li>
+                            <li><a href="#">Expert Team</a></li>
+                            <li><a href="../Contact/Contact.html">Contact us</a></li>
+                            <li><a href="../Product Page/product.html">Latest News</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Column 3: Subscribe -->
+                    <div class="footer-widget">
+                        <div class="footer-widget-heading">
+                            <h3>Subscribe</h3>
+                        </div>
+                        <div class="footer-text mb-6">
+                            <p>Don’t miss to subscribe to our new feeds, kindly fill the form below.</p>
+                        </div>
+                        <div class="subscribe-form">
+                            <form action="ayansalman601@gmail.com">
+                                <input type="email" placeholder="Email Address">
+                                <button type="submit"><i class="fab fa-telegram-plane"></i></button>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            
+        </div>
+    </footer>
+    
+    <!-- Copyright Area -->
+    <div class="copyright-area">
+        <div class="container mx-auto ">
+            <div class="flex flex-wrap items-center justify-between ">
+                
+                <!-- Copyright Text (Left on Desktop, Center on Mobile) -->
+                <div class="w-full lg:w-1/2 text-center lg:text-left mb-4 lg:mb-0">
+                    <div class="copyright-text">
+                        <p>Copyright &copy; 2018, All Right Reserved <a href="../index.html">Salman Electronics</a></p>
+                    </div>
+                </div>
+                
+                <!-- Footer Menu (Right on Desktop, Center on Mobile) -->
+                <div class="w-full lg:w-1/2 text-center lg:text-right">
+                    <div class="footer-menu">
+                        <ul>
+                            <li><a href="../index.html">Home</a></li>
+                            <li><a href="#">Terms</a></li>
+                            <li><a href="#">Privacy</a></li>
+                            <li><a href="#">Policy</a></li>
+                            <li><a href="../Contact/Contact.html">Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+<!-- Footer Code Ends -->
+
+
+
+    <script>
+    // Updated ID reference
+    var navList = document.getElementById("qa-nav-list-id");
+    function Show() {
+        navList.classList.add("qa-nav__list--show");
+    }
+    function Hide(){
+        navList.classList.remove("qa-nav__list--show");
+    }
+</script>
+
+<script>
+    function myFunction() {
+        var input, filter, ul, li, a, i;
+        // Updated ID reference
+        input = document.getElementById("qa-search-input"); 
+        filter = input.value.toUpperCase();
+        // Updated ID reference
+        ul = document.getElementById("qa-search-list"); 
+        li = ul.getElementsByTagName("li");
+
+        for (i = 0; i < li.length; i++) {
+            a = li[i].getElementsByTagName("a")[0];
+            if (filter !== "" && a.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                li[i].style.display = "block"; // Show match
+            } else {
+                li[i].style.display = "none"; // Hide non-match/empty search
+            }
+        }
+    }
+</script>
+
+
+
+    <script src="about.js"></script>
+
+</body>
+</html>

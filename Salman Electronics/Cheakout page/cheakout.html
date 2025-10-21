@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="cheakout.css">
+    <title>Shopping Cart</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+    <h1>Shopping Cart</h1>
+
+<div class="shopping-cart">
+
+  <div class="column-labels">
+    <label class="product-image">Image</label>
+    <label class="product-details">Product</label>
+    <label class="product-price">Price</label>
+    <label class="product-quantity">Quantity</label>
+    <label class="product-removal">Remove</label>
+    <label class="product-line-price">Total</label>
+  </div>
+
+  <div class="product">
+    <div class="product-image">
+      <img src="https://i.postimg.cc/k4D9cyx4/BUILD4-LESS.png">
+    </div>
+    <div class="product-details">
+      <div class="product-title">Product 1</div>
+      <p class="product-description">
+Discover the ultimate in convenience with Product 1, a compact and durable multi-tool designed for everyday use. With its stainless steel construction and versatile functionality, it’s the perfect companion for DIY enthusiasts and outdoor adventurers alike.</p>
+    </div>
+    <div class="product-price">1.00</div>
+    <div class="product-quantity">
+      <input type="number" value="1" min="1">
+    </div>
+    <div class="product-removal">
+      <button class="remove-product">
+        Remove
+      </button>
+    </div>
+    <div class="product-line-price">1.00</div>
+  </div>
+
+  <div class="product">
+    <div class="product-image">
+      <img src="https://i.postimg.cc/k4D9cyx4/BUILD4-LESS.png">
+    </div>
+    <div class="product-details">
+      <div class="product-title">Product 2</div>
+      <p class="product-description">
+Introducing Product 2, a state-of-the-art kitchen appliance that transforms meal prep into a breeze. Featuring a powerful motor and a variety of attachments, it can chop, blend, and mix with ease, making it a must-have for any home chef.</p>
+    </div>
+    <div class="product-price">2.00</div>
+    <div class="product-quantity">
+      <input type="number" value="1" min="1">
+    </div>
+    <div class="product-removal">
+      <button class="remove-product">
+        Remove
+      </button>
+    </div>
+    <div class="product-line-price">2.00</div>
+  </div>
+
+  <div class="product">
+    <div class="product-image">
+      <img src="https://i.postimg.cc/k4D9cyx4/BUILD4-LESS.png">
+    </div>
+    <div class="product-details">
+      <div class="product-title">Prodcut 3</div>
+      <p class="product-description">
+Elevate your home decor with Product 3, an elegantly designed lamp that combines form and function. Its adjustable brightness settings and sleek design make it ideal for creating the perfect ambiance in any room.</p>
+    </div>
+    <div class="product-price">3.00</div>
+    <div class="product-quantity">
+      <input type="number" value="1" min="1">
+    </div>
+    <div class="product-removal">
+      <button class="remove-product">
+        Remove
+      </button>
+    </div>
+    <div class="product-line-price">3.00</div>
+  </div>
+
+  <div class="product">
+    <div class="product-image">
+      <img src="https://i.postimg.cc/k4D9cyx4/BUILD4-LESS.png">
+    </div>
+    <div class="product-details">
+      <div class="product-title">Product 4</div>
+      <p class="product-description">
+Product 4 is a robust and reliable smartwatch that keeps you connected on the go. With its fitness tracking features, customizable watch faces, and long-lasting battery life, it’s the perfect accessory for an active lifestyle.</p>
+    </div>
+    <div class="product-price">4.00</div>
+    <div class="product-quantity">
+      <input type="number" value="1" min="1">
+    </div>
+    <div class="product-removal">
+      <button class="remove-product">
+        Remove
+      </button>
+    </div>
+    <div class="product-line-price">4.00</div>
+  </div>
+
+  <div class="product">
+    <div class="product-image">
+      <img src="https://i.postimg.cc/k4D9cyx4/BUILD4-LESS.png">
+    </div>
+    <div class="product-details">
+      <div class="product-title">Product 5</div>
+      <p class="product-description">
+Product 5 is a high-quality backpack designed for the modern traveler. With its ergonomic design, multiple compartments, and water-resistant material, it’s built to carry all your essentials comfortably and securely.</p>
+    </div>
+    <div class="product-price">5.00</div>
+    <div class="product-quantity">
+      <input type="number" value="1" min="1">
+    </div>
+    <div class="product-removal">
+      <button class="remove-product">
+        Remove
+      </button>
+    </div>
+    <div class="product-line-price">5.00</div>
+  </div>
+
+  <div class="product">
+    <div class="product-image">
+      <img src="https://i.postimg.cc/k4D9cyx4/BUILD4-LESS.png">
+    </div>
+    <div class="product-details">
+      <div class="product-title">Product 6</div>
+      <p class="product-description">
+Experience unparalleled sound quality with Product 6, a pair of wireless earbuds engineered for superior audio performance. With noise-canceling technology and a comfortable fit, they’re perfect for listening to music or taking calls on the go.</p>
+    </div>
+    <div class="product-price">6.00</div>
+    <div class="product-quantity">
+      <input type="number" value="1" min="1">
+    </div>
+    <div class="product-removal">
+      <button class="remove-product">
+        Remove
+      </button>
+    </div>
+    <div class="product-line-price">6.00</div>
+  </div>
+
+  <div class="product">
+    <div class="product-image">
+      <img src="https://i.postimg.cc/k4D9cyx4/BUILD4-LESS.png">
+    </div>
+    <div class="product-details">
+      <div class="product-title">Product 7</div>
+      <p class="product-description">
+Product 7 is a sleek and stylish water bottle that keeps your drinks at the perfect temperature. Its double-wall insulation ensures your beverages stay hot or cold for hours, making it an essential companion for your daily hydration needs.
+</p>
+    </div>
+    <div class="product-price">7.00</div>
+    <div class="product-quantity">
+      <input type="number" value="1" min="1">
+    </div>
+    <div class="product-removal">
+      <button class="remove-product">
+        Remove
+      </button>
+    </div>
+    <div class="product-line-price">7.00</div>
+  </div>
+
+  <div class="product">
+    <div class="product-image">
+      <img src="https://i.postimg.cc/k4D9cyx4/BUILD4-LESS.png">
+    </div>
+    <div class="product-details">
+      <div class="product-title">Product 8</div>
+      <p class="product-description">
+Enhance your productivity with Product 8, an ergonomic office chair designed for maximum comfort. Its adjustable features and lumbar support help reduce fatigue, making it ideal for long hours of work or study.
+</p>
+    </div>
+    <div class="product-price">8.00</div>
+    <div class="product-quantity">
+      <input type="number" value="1" min="1">
+    </div>
+    <div class="product-removal">
+      <button class="remove-product">
+        Remove
+      </button>
+    </div>
+    <div class="product-line-price">8.00</div>
+  </div>
+
+  <div class="product">
+    <div class="product-image">
+      <img src="https://i.postimg.cc/k4D9cyx4/BUILD4-LESS.png">
+    </div>
+    <div class="product-details">
+      <div class="product-title">Product 9</div>
+      <p class="product-description">
+Product 9 is a durable and lightweight suitcase that makes travel a breeze. With its spacious interior, smooth-rolling wheels, and secure locking system, it’s the perfect choice for your next adventure.</p>
+    </div>
+    <div class="product-price">9.00</div>
+    <div class="product-quantity">
+      <input type="number" value="1" min="1">
+    </div>
+    <div class="product-removal">
+      <button class="remove-product">
+        Remove
+      </button>
+    </div>
+    <div class="product-line-price">9.00</div>
+  </div>
+
+  <div class="product">
+    <div class="product-image">
+      <img src="https://i.postimg.cc/k4D9cyx4/BUILD4-LESS.png">
+    </div>
+    <div class="product-details">
+      <div class="product-title">Product 10</div>
+      <p class="product-description">
+Discover the perfect blend of style and functionality with Product 10, a premium leather wallet crafted for everyday use. With ample storage for cards and cash, it’s both practical and sophisticated, making it an essential accessory for any wardrobe.</p>
+    </div>
+    <div class="product-price">10.00</div>
+    <div class="product-quantity">
+      <input type="number" value="1" min="1">
+    </div>
+    <div class="product-removal">
+      <button class="remove-product">
+        Remove
+      </button>
+    </div>
+    <div class="product-line-price">10.00</div>
+  </div>
+
+  <div class="totals">
+    <div class="totals-item">
+      <label>Subtotal</label>
+      <div class="totals-value" id="cart-subtotal">0.00</div>
+    </div>
+    <div class="totals-item">
+      <label>Tax (5%)</label>
+      <div class="totals-value" id="cart-tax">0.00</div>
+    </div>
+    <div class="totals-item">
+      <label>Shipping</label>
+      <div class="totals-value" id="cart-shipping">0.00</div>
+    </div>
+    <div class="totals-item totals-item-total">
+      <label>Grand Total</label>
+      <div class="totals-value" id="cart-total">0.00</div>
+    </div>
+  </div>
+      
+  <button class="checkout">Checkout</button>
+
+</div>
+
+
+<script src="cheakout.js"></script>
+</body>
+</html>
