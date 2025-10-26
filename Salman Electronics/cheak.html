@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Checkout - Salman Electronics</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://kit.fontawesome.com/a2e0e6b42c.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+
+    <style>
+        .payment-option {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border: 2px solid #e5e7eb;
+            border-radius: 0.75rem;
+            padding: 1rem;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .payment-option:hover {
+            border-color: #fb923c;
+            background-color: #fff7ed;
+        }
+        .payment-option.active {
+            border-color: #fb923c;
+            background-color: #fff7ed;
+            box-shadow: 0 0 0 3px rgba(251, 146, 60, 0.2);
+        }
+    </style>
+</head>
+
+<body class="bg-gradient-to-br from-orange-50 to-gray-100 text-gray-800 min-h-screen">
+
+    <div class="max-w-6xl mx-auto mt-10 bg-white rounded-2xl shadow-2xl overflow-hidden grid grid-cols-1 md:grid-cols-2">
+        
+        <div class="p-8">
+            <h2 class="text-3xl font-bold text-orange-600 mb-6 flex items-center">
+                <i class="fa-solid fa-user-pen mr-3 text-orange-500"></i> Billing Details
+            </h2>
+            <form id="checkout-form" class="space-y-4">
+                <div>
+                    <label class="block font-semibold mb-1">Full Name</label>
+                    <input type="text" id="fullname" required class="w-full border rounded-lg px-4 py-2 focus:ring-2 focus:ring-orange-500 focus:outline-none" />
+                </div>
+
+                <div>
+                    <label class="block font-semibold mb-1">Phone Number</label>
+                    <input type="tel" id="phone" required class="w-full border rounded-lg px-4 py-2 focus:ring-2 focus:ring-orange-500 focus:outline-none" />
+                </div>
+
+                <div>
+                    <label class="block font-semibold mb-1">Email Address</label>
+                    <input type="email" id="email" required class="w-full border rounded-lg px-4 py-2 focus:ring-2 focus:ring-orange-500 focus:outline-none" />
+                </div>
+
+                <div>
+                    <label class="block font-semibold mb-1">Address</label>
+                    <textarea id="address" required rows="2" class="w-full border rounded-lg px-4 py-2 focus:ring-2 focus:ring-orange-500 focus:outline-none"></textarea>
+                </div>
+
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="block font-semibold mb-1">Nearby Place</label>
+                        <input type="text" id="nearby" required class="w-full border rounded-lg px-4 py-2 focus:ring-2 focus:ring-orange-500 focus:outline-none" />
+                    </div>
+                    <div>
+                        <label class="block font-semibold mb-1">City</label>
+                        <select id="city" required class="w-full border rounded-lg px-4 py-2 focus:ring-2 focus:ring-orange-500 focus:outline-none">
+                            <option value="">Select City</option>
+                            <option>Karachi</option>
+                            <option>Lahore</option>
+                            <option>Islamabad</option>
+                            <option>Rawalpindi</option>
+                            <option>Faisalabad</option>
+                            <option>Multan</option>
+                            <option>Peshawar</option>
+                            <option>Quetta</option>
+                            <option>Hyderabad</option>
+                            <option>Sialkot</option>
+                            <option>Gujranwala</option>
+                            <option>Sukkur</option>
+                            <option>Bahawalpur</option>
+                            <option>Larkana</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block font-semibold mb-2 text-lg mt-3">Payment Method</label>
+                    <div class="space-y-3">
+                        <div id="payment-online" class="payment-option active" onclick="selectPayment('Online')">
+                            <div class="flex items-center space-x-3">
+                                <i class="fa-solid fa-credit-card text-orange-600 text-xl"></i>
+                                <span class="font-semibold">Credit/Debit Card</span>
+                            </div>
+                            <i class="fa-solid fa-check-circle text-orange-600" id="check-online"></i>
+                          </div>
+                    </div>
+                    
+                    <div id="card-details-section" class="mt-4 p-4 border rounded-lg bg-gray-50 space-y-3">
+                        <p class="font-semibold text-gray-700">Card Information (Simulated)</p>
+                        <div>
+                            <label class="block text-sm mb-1">Card Number</label>
+                            <input type="text" id="card-number" placeholder="XXXX XXXX XXXX XXXX" class="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-orange-500 focus:outline-none" required />
+                        </div>
+                        <div class="grid grid-cols-3 gap-3">
+                            <div class="col-span-2">
+                                <label class="block text-sm mb-1">Expiry Date (MM/YY)</label>
+                                <input type="text" id="card-expiry" placeholder="MM/YY" class="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-orange-500 focus:outline-none" required />
+                            </div>
+                            <div>
+                                <label class="block text-sm mb-1">CVV</label>
+                                <input type="text" id="card-cvv" placeholder="123" class="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-orange-500 focus:outline-none" required />
+                            </div>
+                        </div>
+                    </div>
+
+                        <div id="payment-cod" class="payment-option" onclick="selectPayment('Cash on Delivery')">
+                            <div class="flex items-center space-x-3">
+                                <i class="fa-solid fa-truck-fast text-orange-600 text-xl"></i>
+                                <span class="font-semibold">Cash on Delivery <span class="text-gray-500 text-sm">(Rs 20 fee)</span></span>
+                            </div>
+                            <i class="fa-solid fa-check-circle text-orange-600 hidden" id="check-cod"></i>
+                        </div>
+                </div>
+            </form>
+        </div>
+
+        <div class="bg-gray-50 p-8">
+            <h2 class="text-3xl font-bold mb-6 text-center text-gray-700">
+                <i class="fa-solid fa-bag-shopping text-orange-500 mr-2"></i> Order Summary
+            </h2>
+
+            <div id="checkout-items" class="space-y-4 max-h-72 overflow-y-auto border rounded-lg p-4 bg-white shadow-inner"></div>
+
+            <div class="border-t mt-4 pt-4 space-y-1 text-lg font-semibold text-gray-700">
+                <div class="flex justify-between">
+                    <span>Subtotal:</span>
+                    <span id="checkout-subtotal">Rs 0.00</span>
+                </div>
+
+                <div class="flex justify-between hidden" id="cod-line">
+                    <span>COD Fee:</span>
+                    <span id="cod-fee">Rs 20.00</span>
+                </div>
+
+                <div id="delivery-line" class="flex justify-between">
+                    <span>Delivery Fee:</span>
+                    <span id="delivery-fee">Rs 0.00</span>
+                </div>
+
+                <div class="flex justify-between text-xl font-bold text-gray-900 border-t pt-2">
+                    <span>Total:</span>
+                    <span id="checkout-total">Rs 0.00</span>
+                </div>
+            </div>
+
+            <button onclick="placeOrder()" class="mt-6 w-full py-3 bg-orange-600 text-white rounded-lg font-bold text-lg hover:bg-orange-700 transition duration-200 shadow-lg">
+                Place Order
+            </button>
+        </div>
+    </div>
+
+    
+   <script>
+    // 🔥 Firebase Config
+    var firebaseConfig = {
+        apiKey: "AIzaSyAjPufUIt6k4WXt3R1vmTBBBcDvuU68Zv0",
+        authDomain: "salman-electronics-bea6f.firebaseapp.com",
+        databaseURL: "https://salman-electronics-bea6f-default-rtdb.firebaseio.com",
+        projectId: "salman-electronics-bea6f",
+        storageBucket: "salman-electronics-bea6f.firebasestorage.app",
+        messagingSenderId: "361411398595",
+        appId: "1:361411398595:web:0d27ae1b42ec08122f8b76"
+    };
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.database();
+    // Initialize Auth
+    const auth = firebase.auth(); 
+
+    let cartItems = [];
+    let subtotal = 0;
+    let selectedPayment = "Online"; // Default to Online (Card)
+
+    // NEW HELPER FUNCTION: Formats a number as Pakistani Rupees with commas
+    const formatCurrency = (number) => {
+        // Use toLocaleString for proper comma separation (e.g., 1,234.00)
+        return "Rs " + parseFloat(number).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    };
+
+    // Helper function to safely process item data
+    const processItem = (item, itemId, container) => {
+        const quantity = parseInt(item.product_quantity) || 1; 
+        const priceString = String(item.product_price || "Rs 0"); 
+        const numericUnitPrice = parseFloat(priceString.replace(/[^0-9.]/g, ""));
+        
+        const itemTotal = !isNaN(numericUnitPrice) ? (numericUnitPrice * quantity) : 0;
+        
+        subtotal += itemTotal;
+
+        cartItems.push({ id: itemId, ...item, numeric_price: numericUnitPrice, quantity: quantity });
+
+        container.innerHTML += `
+            <div class="flex items-start justify-between border-b pb-2 bg-white p-3 rounded-lg shadow-sm">
+                <div class="flex items-center space-x-3">
+                    <img src="${item.product_image}" class="w-16 h-16 object-cover rounded-md border" alt="">
+                    <div>
+                        <h3 class="font-semibold">${item.product_title}</h3>
+                        <p class="text-gray-600">${item.product_price}</p>
+                        ${item.product_color ? `<p class="text-sm text-gray-500">Color: ${item.product_color}</p>` : ""}
+                        ${item.product_storage ? `<p class="text-sm text-gray-500">Storage: ${item.product_storage}</p>` : ""}
+                        ${item.product_quantity ? `<p class="text-sm text-gray-500">Qty: ${item.product_quantity}</p>` : ""}
+                    </div>
+                </div>
+                <div class="pt-1">
+                    <button onclick="deleteProduct('${itemId}')" class="text-red-500 hover:text-red-700">
+                        <i class="fa-solid fa-xmark text-lg"></i>
+                    </button>
+                </div>
+            </div>`;
+    };
+
+    // 🛒 Load Data from either 'single_buy_item' or 'products'
+    function loadCheckoutData(snapshot) {
+        const container = document.getElementById("checkout-items");
+        container.innerHTML = "";
+        cartItems = [];
+        subtotal = 0;
+        
+        let hasItems = false;
+        
+        if (snapshot.exists()) {
+            if (snapshot.key === "single_buy_item") {
+                // Scenario 1: Buy Now (single item)
+                processItem(snapshot.val(), "temp_single_buy_id", container);
+                hasItems = true;
+            } else {
+                // Scenario 2: Regular Cart (multiple items from 'products')
+                snapshot.forEach((child) => {
+                    processItem(child.val(), child.key, container);
+                    hasItems = true;
+                });
+            }
+        }
+
+        if (!hasItems) {
+            container.innerHTML = `<p class="text-center text-gray-500">Your cart is empty.</p>`;
+        }
+
+        updateTotals();
+    }
+    
+    // Check for the 'single_buy_item' node first
+    db.ref("single_buy_item").once("value")
+        .then(snapshot => {
+            if (snapshot.exists() && snapshot.val()) {
+                loadCheckoutData(snapshot);
+            } else {
+                // Fallback: load the regular 'products' cart and listen for changes
+                db.ref("products").on("value", (snapshot) => {
+                    loadCheckoutData(snapshot);
+                });
+            }
+        });
+
+    // 🗑️ Delete Product FUNCTION 
+    function deleteProduct(id) {
+        if (id === "temp_single_buy_id") {
+             db.ref("single_buy_item").remove().then(() => {
+                 db.ref("products").once("value").then(s => loadCheckoutData(s)); // Reload to show empty or regular cart
+               });
+        } else {
+            db.ref("products/" + id).remove();
+        }
+        
+        Swal.fire({
+            icon: "success",
+            title: "Item Removed",
+            text: "Product has been removed from your list.",
+            timer: 1200,
+            showConfirmButton: false
+        });
+    }
+
+    // 💳 Select Payment Method (Controls visibility of card fields)
+    function selectPayment(method) {
+        selectedPayment = method;
+        const onlineDiv = document.getElementById("payment-online");
+        const codDiv = document.getElementById("payment-cod");
+        const checkOnline = document.getElementById("check-online");
+        const checkCod = document.getElementById("check-cod");
+        const cardSection = document.getElementById("card-details-section");
+
+        if (method === "Online") {
+            onlineDiv.classList.add("active");
+            codDiv.classList.remove("active");
+            checkOnline.classList.remove("hidden");
+            checkCod.classList.add("hidden");
+            cardSection.classList.remove("hidden"); // Show card fields
+        } else {
+            codDiv.classList.add("active");
+            onlineDiv.classList.remove("active");
+            checkCod.classList.remove("hidden");
+            checkOnline.classList.add("hidden");
+            cardSection.classList.add("hidden"); // Hide card fields
+        }
+
+        updateTotals();
+    }
+
+    // 💰 Update Totals - UPDATED TO USE formatCurrency
+    function updateTotals() {
+        const city = document.getElementById("city")?.value || "";
+        const codFee = selectedPayment === "Cash on Delivery" ? 20 : 0;
+        
+        let deliveryFee = 0;
+        if (city === "Karachi") {
+             deliveryFee = 150;
+        } else if (city) {
+             deliveryFee = 500; 
+        }
+        
+        const total = subtotal + codFee + deliveryFee;
+
+        // Applying formatCurrency here
+        document.getElementById("checkout-subtotal").innerText = formatCurrency(subtotal);
+        document.getElementById("delivery-fee").innerText = formatCurrency(deliveryFee);
+        document.getElementById("checkout-total").innerText = formatCurrency(total);
+        
+        const codFeeDisplay = document.getElementById("cod-fee");
+        if (codFeeDisplay) codFeeDisplay.innerText = formatCurrency(codFee);
+
+        const codLine = document.getElementById("cod-line");
+        if (codLine) codLine.classList.toggle("hidden", selectedPayment !== "Cash on Delivery");
+    }
+
+    // 🏙️ City Selection Change
+    document.addEventListener("DOMContentLoaded", () => {
+        const citySelect = document.getElementById("city");
+        if (citySelect) citySelect.addEventListener("change", updateTotals);
+        // Ensure initial state for card section is correct (default is 'Online')
+        document.getElementById("card-details-section").classList.remove("hidden");
+    });
+
+    // 🔑 Function to handle Firebase User Creation and Email Verification
+    async function handleEmailVerification(email) {
+        const password = "tempPassword123"; // Use a temporary, secure password for initial sign-up
+
+        try {
+            // 1. Sign up the user (or sign in if already exists)
+            const userCredential = await auth.createUserWithEmailAndPassword(email, password);
+            const user = userCredential.user;
+
+            // 2. Send the verification email
+            await user.sendEmailVerification();
+
+            console.log("Verification email sent successfully.");
+            return true;
+        } catch (error) {
+            if (error.code === 'auth/email-already-in-use') {
+                // If the email already exists, try to send the verification link again
+                try {
+                    await auth.signInWithEmailAndPassword(email, password);
+                    await auth.currentUser.sendEmailVerification();
+                    console.log("User signed in, verification email re-sent.");
+                    return true;
+                } catch (signInError) {
+                    console.error("Error signing in existing user or resending email:", signInError);
+                    // This often means the existing user didn't use this app's temp password, which is okay.
+                    // We can still proceed with the order as a guest.
+                    return false; 
+                }
+            } else {
+                console.error("Firebase Auth Error:", error);
+                return false; // Critical auth error
+            }
+        }
+    }
+
+
+    // ✅ Place Order Function
+    async function placeOrder() {
+        // --- 1. Collect and Validate Billing Info ---
+        const name = document.getElementById("fullname").value.trim();
+        const phone = document.getElementById("phone").value.trim();
+        const email = document.getElementById("email").value.trim();
+        const address = document.getElementById("address").value.trim();
+        const nearby = document.getElementById("nearby").value.trim();
+        const city = document.getElementById("city").value.trim();
+
+        if (!name || !phone || !email || !address || !nearby || !city) {
+            Swal.fire({ icon: "warning", title: "Missing Info", text: "Please fill all required fields!", confirmButtonColor: "#f97316" });
+            return;
+        }
+
+        if (cartItems.length === 0) {
+            Swal.fire({ icon: "warning", title: "Empty Cart", text: "Add items before placing order!", confirmButtonColor: "#f97316" });
+            return;
+        }
+
+        // --- 2. Validate Card Info if Online Payment is selected ---
+        if (selectedPayment === "Online") {
+            const cardNumber = document.getElementById("card-number").value.trim();
+            const cardExpiry = document.getElementById("card-expiry").value.trim();
+            const cardCvv = document.getElementById("card-cvv").value.trim();
+            
+            // Simple validation (you'd need a payment gateway for real validation)
+            if (cardNumber.length !== 16 || cardExpiry.length !== 5 || cardCvv.length !== 3) {
+                 Swal.fire({ icon: "error", title: "Invalid Card", text: "Please enter valid card details (simulated).", confirmButtonColor: "#f97316" });
+                 return;
+            }
+        }
+        
+        // --- 3. Process Fees and Order Data ---
+        const codFee = selectedPayment === "Cash on Delivery" ? 20 : 0;
+        let deliveryFee = city === "Karachi" ? 150 : 500;
+        const total = subtotal + codFee + deliveryFee;
+
+        const orderItems = cartItems.map(item => {
+            const { numeric_price, id, ...rest } = item;
+            return rest;
+        });
+
+        const orderData = {
+            customer: { name, phone, email, address, nearby, city, payment: selectedPayment },
+            items: orderItems,
+            // Applying formatCurrency string for database storage
+            subtotal: formatCurrency(subtotal),
+            cod_fee: formatCurrency(codFee),
+            delivery_fee: formatCurrency(deliveryFee),
+            total: formatCurrency(total),
+            status: "Pending",
+            timestamp: new Date().toLocaleString()
+        };
+
+        // --- 4. Firebase Authentication and Email Verification ---
+        const emailVerified = await handleEmailVerification(email);
+        
+        // --- 5. Place Order in Realtime Database ---
+        try {
+             await db.ref("orders").push(orderData);
+             
+             // --- 6. Success Alert and Cleanup ---
+             let verificationMessage = "";
+             if (emailVerified) {
+                 verificationMessage = "and a **verification email** has been sent to your address. Please check your inbox!";
+             } else {
+                 verificationMessage = "Your email address already exists in our system.";
+             }
+
+             Swal.fire({
+                 icon: "success",
+                 title: "Order Placed Successfully! 🎉",
+                 html: `Thank you for shopping with Salman Electronics. Your order has been placed successfully ${verificationMessage}`,
+                 confirmButtonColor: "#16a34a"
+             });
+
+             // Clear cart/single-buy item nodes
+             db.ref("products").remove(); 
+             db.ref("single_buy_item").remove(); 
+             
+             // Clear UI
+             document.getElementById("checkout-form").reset();
+             document.getElementById("checkout-items").innerHTML = `<p class="text-center text-gray-500">Your cart is empty.</p>`;
+             subtotal = 0;
+             updateTotals();
+        } catch (error) {
+            console.error("Firebase write error:", error);
+            Swal.fire({ icon: "error", title: "Error", text: "Something went wrong! Could not place order.", confirmButtonColor: "#ef4444" });
+        }
+    }
+    </script>
+
+</body>
+</html>
